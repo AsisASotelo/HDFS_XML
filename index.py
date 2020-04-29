@@ -5,7 +5,7 @@
 # index.py
 
 import sys
-import lxml 
+from lxml import etree
 import json
 
 
@@ -18,4 +18,20 @@ import json
 # Production of index file for names of files and dir
 # Strings are assumed to be tokenized by white spaces
 
+# Helper Function
 
+def printf(elems,mode = 'node'):
+    if mode == 'node':
+        for elem in elems:
+            print (etree.tostring(elem).decode('utf-8'))
+    if mode == 'text':
+        for elem in elems:
+            print(elem.text)
+
+        
+
+def main():
+
+
+if __name__ == "__main__":
+    main()
