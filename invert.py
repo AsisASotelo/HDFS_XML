@@ -49,7 +49,7 @@ class Inverter:
     def parseXml(self):
         with open(self.fileName) as xmlFile:
             self.tree= etree.parse(xmlFile)
-    
+    # TokenCreator has at most N number of iterations
     def tokenCreator(self):
         elem_list=[]
         for element in self.tree.xpath("//INodeSection/inode/name"):
@@ -57,7 +57,7 @@ class Inverter:
                 elem_list.append(element.text.replace(".txt","").replace(".xml",""))
         token_list = [sub.replace('-',' ').split(' ') for sub in elem_list]
         self.flatTokenList = set(flatten(token_list))
-                
+    # This method has M number of iterations by the number of tokens.     
     def xmlWriter(self):
         i=0
         index_root=etree.Element("index")
